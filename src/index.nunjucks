@@ -4,6 +4,7 @@
 
 {% block content %}
 
+Chart title
 <div class="charts">
   <div class="inline-chart" id="rcv"></div>
 </div>
