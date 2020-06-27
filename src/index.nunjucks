@@ -4,7 +4,7 @@
 
 {% block content %}
 
-Chart title
+<div class="chart-title">Distribution of votes</div>
 <div class="charts">
   <div class="inline-chart" id="rcv"></div>
 </div>
