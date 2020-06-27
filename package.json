@@ -2,6 +2,7 @@
   "name": "cd2-poll",
   "version": "0.0.1",
   "dependencies": {
+    "d3": "^5.16.0",
     "jquery": "^3.5.1",
     "normalize.css": "~5.0.0"
   },
@@ -71,7 +72,7 @@
     "baseUrl": "./",
     "directories": {
       "source": "src",
-      "destination": "build",
+      "destination": "docs",
       "temporary": "tmp",
       "//": "Directories relative to `source` directory",
       "modules": "_modules",
