@@ -6,6 +6,23 @@
 .chart-title {
     font-family: Helvetica,Arial,sans-serif;
     font-size: 20px;
-    margin-left: 2px;
+    margin-left: 5px;
     font-weight: bold;
+}
+
+.chart-text {
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+.highlight {
+  fill: #a36774;
+}
+
+.chart-tooltip {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  text-anchor: middle;
+  font-weight: bold;
 }
