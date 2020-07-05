@@ -16,7 +16,7 @@
     margin-left: 5px;
 }
 
-.highlight {
+.highlight-red {
   fill: #a36774;
 }
 
@@ -25,4 +25,9 @@
   font-size: 12px;
   text-anchor: middle;
   font-weight: bold;
+}
+
+.pie-chart{
+  width: 33%;
+  display: inline-block;
 }

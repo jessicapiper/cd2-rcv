@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "dependencies": {
     "d3": "^5.16.0",
+    "d3-svg-annotation": "^2.5.1",
     "jquery": "^3.5.1",
     "normalize.css": "~5.0.0"
   },

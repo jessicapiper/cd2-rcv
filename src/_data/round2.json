@@ -1,23 +1,25 @@
 [
   {
-    "firstChoice": "Eric Brakey",
+    "candidate": "Eric Brakey",
     "Brakey": .0,
     "Bennett": .4,
-    "Crafts": .35,
-    "No second choice": .25
+    "Crafts": .35
   },
   {
-    "firstChoice": "Dale Crafts",
+    "candidate": "Dale Crafts",
     "Brakey": .37,
     "Bennett": .41,
-    "Crafts": .0,
-    "No second choice": .22
+    "Crafts": .0
   },
   {
-    "firstChoice": "Adrienne Bennett",
-    "Brakey": .3,
+    "candidate": "Adrienne Bennett",
+    "Brakey": .2,
     "Bennett": .0,
-    "Crafts": .6,
-    "No second choice": .1
+    "Crafts": .6
+  },{
+    "candidate": "none",
+    "Brakey": .33,
+    "Bennett": .19,
+    "Crafts": .05
   }
 ]
