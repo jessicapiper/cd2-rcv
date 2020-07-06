@@ -14,10 +14,25 @@
     font-family: Helvetica,Arial,sans-serif;
     font-size: 14px;
     margin-left: 5px;
+    margin-bottom: 0px;
+}
+
+.chart-subtitle {
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    margin-left: 5px;
+    font-style: italic;
+    font-weight: 100;
+    margin-bottom: 5px;
+    min-width: 300px;
 }
 
 .highlight-red {
   fill: #a36774;
+}
+
+.highlight-gray {
+  fill: #c4c4c4;
 }
 
 .chart-tooltip {
@@ -30,4 +45,7 @@
 .pie-chart{
   width: 33%;
   display: inline-block;
+  align-content: center;
+  min-width: 300;
+  min-height: 300;
 }

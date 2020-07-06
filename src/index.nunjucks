@@ -10,11 +10,14 @@
   <div class="inline-chart" id="rcv1"></div>
 </div>
 
-<div class="chart-title">Where candidates' voters say they would go next:</div>
-<div class="charts">
-  <div class="pie-chart" id="rcv2"></div>
-</div>
+<div class="chart-title">Where voters say they would go next:</div>
+<div class="chart-text">The second-choice picks of the voters who preferred the candidate who comes in last will be redistributed.</div>
+<p></p>
+<div class="pie-chart" id="BrakeyVoters"><div class ="chart-subtitle">Voters who put Eric Brakey first:</div></div>
+<div class="pie-chart" id="BennettVoters"><div class ="chart-subtitle">Voters who put Adrienne Bennett first:</div></div>
+<div class="pie-chart" id="CraftsVoters"><div class ="chart-subtitle">Voters who put Dale Crafts first:</div></div>
 
+<br>
 <div class="chart-title">Final tally after redistribution of second-choice votes:</div>
 <div class="chart-text">In this scenario, voters who put Dale Crafts first see their votes redistributed.</div>
 <div class="charts">

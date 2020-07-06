@@ -6,18 +6,18 @@
     "Crafts": .35
   },
   {
+    "candidate": "Adrienne Bennett",
+    "Brakey": .2,
+    "Bennett": .0,
+    "Crafts": .6
+  },{
     "candidate": "Dale Crafts",
     "Brakey": .37,
     "Bennett": .41,
     "Crafts": .0
   },
   {
-    "candidate": "Adrienne Bennett",
-    "Brakey": .2,
-    "Bennett": .0,
-    "Crafts": .6
-  },{
-    "candidate": "none",
+    "candidate": "no second choice",
     "Brakey": .33,
     "Bennett": .19,
     "Crafts": .05
