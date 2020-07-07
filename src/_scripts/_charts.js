@@ -249,11 +249,11 @@ thirdRound('#rcv3');
 
 function secondRound(element,lastname){
 
-var margin = {top: 0, right:20, bottom:0, left:0};
+var margin = {top: 0, right:0, bottom:0, left:0};
 
 var container = d3.select(element);
 var containerWidth = container.node().offsetWidth;
-var containerHeight = 250;
+var containerHeight = 250//containerWidth;
 var chartWidth = containerWidth - margin.right - margin.left;
 var chartHeight = containerHeight - margin.top - margin.bottom;
 
@@ -300,7 +300,7 @@ svg.selectAll('g')
       d3.select(this).classed('highlight-gray', true);
       tooltip.html(labels[d.data.key] + ": " + d.data.value*100 + "%")//(d3.format("$,.0f")(xScale(d[1]-d[0]))
             .style("opacity", 1)
-            .attr('transform',`translate(160, 50)`)//(${xPosition}, ${yPosition}) `)
+            .attr('transform',`translate(80, 50)`)//(${xPosition}, ${yPosition}) `)
             //.attr('transform',`translate(arcGenerator.centroid(d))`)
     })
     .on('mouseleave', function(d) {
