@@ -105,7 +105,7 @@ firstRound('#rcv1');
 
 function thirdRound(element){
 
-var margin = {top: 20, right:20, bottom:120, left:140};
+var margin = {top: 20, right:60, bottom:120, left:140};
 
 var container = d3.select(element);
 var containerWidth = 600//container.node().offsetWidth;
@@ -170,6 +170,9 @@ var color = d3.scaleOrdinal()
   //.range(d3.quantize(t => d3.interpolateSpectral(t * 0.8 + 0.1), series.length).reverse())
   .unknown("#ccc")
 
+var tooltip = svg.append('text')
+    .attr('class', 'chart-tooltip');
+
 svg.append("g")
   .selectAll("g")
   .data(series)
@@ -181,7 +184,36 @@ svg.append("g")
     .attr("x", d => xScale(d[0]))//d => x(d[0]))
     .attr("y", d => yScale(d.data.candidate)+50)
     .attr("width", d => xScale(d[1]-d[0]))
-    .attr("height",yScale.bandwidth());
+    .attr("height",yScale.bandwidth())
+    .on('mouseenter', function(d) {
+        var coordinates= d3.mouse(this);
+        var xPosition = 250//xScale(d[1]) + 50//xScale(d[1])+15//400//xScale(d.ballot1) + 0.1//coordinates[0]+10//coordinates[0];
+        var yPosition = yScale(d.data.candidate)+50)//coordinates[1]//yScale(d.data.candidate)+28//coordinates[1]-10//coordinates[1] + 25;
+        function getEl(c){
+        if(c[0] < xScale(d[1]-d[0])) {
+          return('highlight-red');
+        }else {
+          return('highlight-yellow');
+        }
+        }
+        function getText(c){
+          if(c[0] < xScale(d[1]-d[0])) {
+            return("Round 1 votes: " + d3.format(",.0%")d[0]);
+          }else {
+            return("Round 2 votes: " + d3.format(",.0%")d[1]);
+          }
+        }
+        d3.select(this).classed(getEl(coordinates),true);
+        tooltip.text(getText(coordinates))//d3.format(",.0%")(d[1]))//(d3.format("$,.0f")(xScale(d[1]-d[0]))
+              .style("opacity", 1)
+              .attr('transform',`translate(${xPosition}, ${yPosition}) `)
+              //.moveToFront();//rotate (-10)`)
+      })
+      .on('mouseleave', function(d) {
+        d3.select(this).classed('highlight-red', false);
+        d3.select(this).classed('highlight-yellow', false);
+        tooltip.text('');
+      });
 
 var legend = svg.append("g")
   .attr("width",series.length * 36)
@@ -241,7 +273,7 @@ var tooltip = svg.append('text')
 // set the color scale
 var color = d3.scaleOrdinal()
   .domain(data[1,2,3])
-  .range(["#8c1a0f", "#eb2815", "#ffea00", "#9ae3cc"])
+  .range(["#ffcc00", "#bf3f3f", "#ff9d1c", "#ababab"])
 
 // Compute the position of each group on the pie:
 var pie = d3.pie()

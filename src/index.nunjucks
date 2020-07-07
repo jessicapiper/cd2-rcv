@@ -11,7 +11,7 @@
 </div>
 
 <div class="chart-title">Where voters say they would go next:</div>
-<div class="chart-text">The second-choice picks of the voters who preferred the candidate who comes in last will be redistributed.</div>
+<div class="chart-text">Only second-choice picks of the voters who preferred the candidate with the least first-choice votes matter, but we're displaying all second-choice votes here.</div>
 <p></p>
 <div class="pie-chart" id="BrakeyVoters"><div class ="chart-subtitle">Voters who put Eric Brakey first:</div></div>
 <div class="pie-chart" id="BennettVoters"><div class ="chart-subtitle">Voters who put Adrienne Bennett first:</div></div>
@@ -19,7 +19,7 @@
 
 <br>
 <div class="chart-title">Final tally after redistribution of second-choice votes:</div>
-<div class="chart-text">In this scenario, voters who put Dale Crafts first see their votes redistributed.</div>
+<div class="chart-text">In this scenario, voters who put Dale Crafts first see their votes redistributed. Eric Brakey is the winner.</div>
 <div class="charts">
   <div class="inline-chart" id="rcv3"></div>
 </div>

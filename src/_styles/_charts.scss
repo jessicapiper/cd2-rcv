@@ -32,7 +32,11 @@
 }
 
 .highlight-gray {
-  fill: #c4c4c4;
+  fill: #363636;
+}
+
+.highlight-yellow {
+  fill: #ffec70;
 }
 
 .chart-tooltip {
@@ -45,7 +49,7 @@
 .pie-chart{
   width: 33%;
   display: inline-block;
-  align-content: center;
+  align-content: left;
   min-width: 300;
   min-height: 300;
 }
