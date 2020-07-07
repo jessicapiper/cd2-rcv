@@ -122,7 +122,7 @@ var svg = container.append('svg')
             .attr('transform', `translate(${margin.left}, ${margin.top})`)
 
 var yDomain = round3.map(d => d.candidate)
-var xDomain = [0,1]
+var xDomain = [0,.6]
 
 var yScale = d3.scaleBand()
     .domain(yDomain)
@@ -203,10 +203,10 @@ svg.append("g")
             return("Final tally: " + (d[1]*100) + "%");
           }
         }
-        var x = 210;//xScale(d[1]) + 50//xScale(d[1])+15//400//xScale(d.ballot1) + 0.1//coordinates[0]+10//coordinates[0];
+        var x = chartWidth - chartWidth/8//xScale(d[1])+15//400//xScale(d.ballot1) + 0.1//coordinates[0]+10//coordinates[0];
         var y = yScale(d.data.candidate)+80;
         d3.select(this).classed(getEl(coordinates),true);
-        tooltip.text(getText(coordinates))//d3.format(",.0%")(d[1]))//(d3.format("$,.0f")(xScale(d[1]-d[0]))
+        tooltip.text("Final tally: " + (d[1]*100) + "%")//d3.format(",.0%")(d[1]))//(d3.format("$,.0f")(xScale(d[1]-d[0]))
               .style("opacity", 1)
               .attr('transform',`translate(${x}, ${y}) `)
               //.moveToFront();//rotate (-10)`)
@@ -249,11 +249,11 @@ thirdRound('#rcv3');
 
 function secondRound(element,lastname){
 
-var margin = {top: 0, right:0, bottom:0, left:0};
+var margin = {top: 0, right:20, bottom:0, left:0};
 
 var container = d3.select(element);
 var containerWidth = container.node().offsetWidth;
-var containerHeight = 300;
+var containerHeight = 250;
 var chartWidth = containerWidth - margin.right - margin.left;
 var chartHeight = containerHeight - margin.top - margin.bottom;
 
@@ -282,7 +282,6 @@ var pie = d3.pie()
   .value(function(d) {return d.value; })
 var data_ready = pie(d3.entries(data))
 
-//var data_sub = subset(data_ready,0,3)
 // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
 svg.selectAll('g')
   .data(data_ready)
@@ -328,7 +327,7 @@ var legend = svg.append("g")
     }
   })
   .join("g")
-    .attr("transform", (d, i) => `translate(${i * 90},0)`);
+    .attr("transform", (d, i) => `translate(${i * 85},0)`);
 
 legend.append("rect")
       .attr("x", 5)
