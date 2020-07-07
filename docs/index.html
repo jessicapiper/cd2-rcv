@@ -10,9 +10,24 @@
 <body>
     
 
-<div class="chart-title">Distribution of votes</div>
+<div class="chart-title">Distribution of first-round votes:</div>
+<div class="chart-text">Any candidate would need 50 percent of the vote to avoid a ranked-choice tally.</div>
 <div class="charts">
-  <div class="inline-chart" id="rcv"></div>
+  <div class="inline-chart" id="rcv1"></div>
+</div>
+
+<div class="chart-title">Where voters say they would go next:</div>
+<div class="chart-text">Only second-choice picks of the voters who preferred the candidate with the least first-choice votes matter, but we're displaying all second-choice votes here.</div>
+<p></p>
+<div class="pie-chart" id="BrakeyVoters"><div class="chart-subtitle">Voters who put Eric Brakey first:</div></div>
+<div class="pie-chart" id="BennettVoters"><div class="chart-subtitle">Voters who put Adrienne Bennett first:</div></div>
+<div class="pie-chart" id="CraftsVoters"><div class="chart-subtitle">Voters who put Dale Crafts first:</div></div>
+
+<br>
+<div class="chart-title">Final tally after redistribution of second-choice votes:</div>
+<div class="chart-text">In this scenario, voters who put Dale Crafts first see their votes redistributed. Eric Brakey is the winner.</div>
+<div class="charts">
+  <div class="inline-chart" id="rcv3"></div>
 </div>
 
 <script>
@@ -34,9 +49,47 @@ var results = [
   }
 ]
 ;
+var round2 = [
+  {
+    "candidate": "Eric Brakey",
+    "Brakey": .0,
+    "Bennett": .4,
+    "Crafts": .35
+  },
+  {
+    "candidate": "Adrienne Bennett",
+    "Brakey": .2,
+    "Bennett": .0,
+    "Crafts": .6
+  },{
+    "candidate": "Dale Crafts",
+    "Brakey": .37,
+    "Bennett": .41,
+    "Crafts": .0
+  },
+  {
+    "candidate": "no second choice",
+    "Brakey": .33,
+    "Bennett": .19,
+    "Crafts": .05
+  }
+]
+;
+var round3 = [
+  {
+    "candidate": "Eric Brakey",
+    "First ballot": .37,
+    "Redistributed votes": .14
+  },
+  {
+    "candidate": "Adrienne Bennett",
+    "First ballot": .32,
+    "Redistributed votes": .17
+  }
+]
+;
 </script>
 
-<code class="version">v2.0.1</code>
 
     
     <script src="scripts/main.js"></script>
