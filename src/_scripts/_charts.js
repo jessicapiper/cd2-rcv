@@ -8,7 +8,7 @@ function firstRound(element){
 var margin = {top: 20, right:20, bottom:120, left:140};
 
 var container = d3.select(element);
-var containerWidth = 600//container.node().offsetWidth;
+var containerWidth = container.node().offsetWidth;
 var containerHeight = 300;
 var chartWidth = containerWidth - margin.right - margin.left;
 var chartHeight = containerHeight - margin.top - margin.bottom;
@@ -36,12 +36,14 @@ var formatAxis = d3.format(",.0%");
 var xAxis = d3.axisBottom(xScale)
   .tickFormat(formatAxis)
   .tickSize(-chartHeight)
-  .ticks(9);
+  .ticks(9)
+    //.attr("stroke","lightgray");
 var yAxis = d3.axisLeft(yScale);
 
 svg.append("g")
     .attr("class", "x axis")
     .attr("transform", `translate(0,${chartHeight})`)
+    //.attr("stroke", "#808080")
     .call(xAxis)
     .selectAll("text")
         .style("text-anchor", "end")
@@ -86,7 +88,7 @@ svg.append("g")
     .attr("height",yScale.bandwidth())
   .on('mouseenter', function(d) {
       //var coordinates= d3.mouse(this);
-      var xPosition = xScale(d[1])+15//400//xScale(d.ballot1) + 0.1//coordinates[0]+10//coordinates[0];
+      var xPosition = xScale(d[1])+5//400//xScale(d.ballot1) + 0.1//coordinates[0]+10//coordinates[0];
       var yPosition = yScale(d.data.candidate)+28//coordinates[1]-10//coordinates[1] + 25;
       d3.select(this).classed('highlight-red', true);
       tooltip.html(d3.format(",.0%")(d[1]))//(d3.format("$,.0f")(xScale(d[1]-d[0]))
@@ -108,7 +110,7 @@ function thirdRound(element){
 var margin = {top: 20, right:60, bottom:120, left:140};
 
 var container = d3.select(element);
-var containerWidth = 600//container.node().offsetWidth;
+var containerWidth = container.node().offsetWidth;
 var containerHeight = 270;
 var chartWidth = containerWidth - margin.right - margin.left;
 var chartHeight = containerHeight - margin.top - margin.bottom;
@@ -187,8 +189,6 @@ svg.append("g")
     .attr("height",yScale.bandwidth())
     .on('mouseenter', function(d) {
         var coordinates= d3.mouse(this);
-        var xPosition = 250//xScale(d[1]) + 50//xScale(d[1])+15//400//xScale(d.ballot1) + 0.1//coordinates[0]+10//coordinates[0];
-        var yPosition = yScale(d.data.candidate)+50)//coordinates[1]//yScale(d.data.candidate)+28//coordinates[1]-10//coordinates[1] + 25;
         function getEl(c){
         if(c[0] < xScale(d[1]-d[0])) {
           return('highlight-red');
@@ -197,16 +197,18 @@ svg.append("g")
         }
         }
         function getText(c){
-          if(c[0] < xScale(d[1]-d[0])) {
-            return("Round 1 votes: " + d3.format(",.0%")d[0]);
+          if(c[0] < xScale(d[1]-d[0])){
+            return("Round 1 votes: " + d3.format(",.0%")(d[1]-d[0]));
           }else {
-            return("Round 2 votes: " + d3.format(",.0%")d[1]);
+            return("Final tally: " + (d[1]*100) + "%");
           }
         }
+        var x = 210;//xScale(d[1]) + 50//xScale(d[1])+15//400//xScale(d.ballot1) + 0.1//coordinates[0]+10//coordinates[0];
+        var y = yScale(d.data.candidate)+80;
         d3.select(this).classed(getEl(coordinates),true);
         tooltip.text(getText(coordinates))//d3.format(",.0%")(d[1]))//(d3.format("$,.0f")(xScale(d[1]-d[0]))
               .style("opacity", 1)
-              .attr('transform',`translate(${xPosition}, ${yPosition}) `)
+              .attr('transform',`translate(${x}, ${y}) `)
               //.moveToFront();//rotate (-10)`)
       })
       .on('mouseleave', function(d) {
@@ -250,7 +252,7 @@ function secondRound(element,lastname){
 var margin = {top: 0, right:0, bottom:0, left:0};
 
 var container = d3.select(element);
-var containerWidth = 300//container.node().offsetWidth;
+var containerWidth = container.node().offsetWidth;
 var containerHeight = 300;
 var chartWidth = containerWidth - margin.right - margin.left;
 var chartHeight = containerHeight - margin.top - margin.bottom;
@@ -261,7 +263,7 @@ var svg = container.append('svg')
             .append('g')
             .attr('transform', `translate(${margin.left}, ${margin.top})`)
 
-var radius = containerWidth/2 - 60;
+var radius = containerHeight/2 - 60;
 
 var data = round2.map(d => d[lastname])//{a: 9, b: 20, c:30, d:8, e:12}
 var labels = round2.map(d => d.candidate)
@@ -299,7 +301,7 @@ svg.selectAll('g')
       d3.select(this).classed('highlight-gray', true);
       tooltip.html(labels[d.data.key] + ": " + d.data.value*100 + "%")//(d3.format("$,.0f")(xScale(d[1]-d[0]))
             .style("opacity", 1)
-            .attr('transform',`translate(200, 50)`)//(${xPosition}, ${yPosition}) `)
+            .attr('transform',`translate(160, 50)`)//(${xPosition}, ${yPosition}) `)
             //.attr('transform',`translate(arcGenerator.centroid(d))`)
     })
     .on('mouseleave', function(d) {

@@ -1,6 +1,8 @@
 .inline-chart {
     width: 99%;
     display: inline-block;
+    min-width: 300;
+    min-height: 300;
 }
 
 .chart-title {
@@ -41,8 +43,8 @@
 
 .chart-tooltip {
   font-family: Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  text-anchor: middle;
+  font-size: 10px;
+  text-anchor: left;
   font-weight: bold;
 }
 
