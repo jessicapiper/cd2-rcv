@@ -32,12 +32,15 @@ var xScale = d3.scaleLinear()
     .range([0, chartWidth]);
 
 var formatAxis = d3.format(",.0%");
+//  .attr('stroke','lightgray');
 
 var xAxis = d3.axisBottom(xScale)
   .tickFormat(formatAxis)
   .tickSize(-chartHeight)
-  .ticks(9)
-    //.attr("stroke","lightgray");
+  .ticks(9)//.classed('ticksColor',true);
+  //.attr("stroke","blue");
+//d3.select(xAxis).classed('ticksColor', true);
+
 var yAxis = d3.axisLeft(yScale);
 
 svg.append("g")
@@ -45,6 +48,7 @@ svg.append("g")
     .attr("transform", `translate(0,${chartHeight})`)
     //.attr("stroke", "#808080")
     .call(xAxis)
+    //.attr("stroke", "blue")
     .selectAll("text")
         .style("text-anchor", "end")
         .style("font-size","14px")
@@ -76,6 +80,7 @@ var tooltip = svg.append('text')
 
 svg.append("g")
   .selectAll("g")
+  //.attr("stroke", "lightgray")
   .data(series)
   .enter().append("g")
     .attr("fill", d => color(d.key))
@@ -206,7 +211,7 @@ svg.append("g")
         var x = chartWidth - chartWidth/8//xScale(d[1])+15//400//xScale(d.ballot1) + 0.1//coordinates[0]+10//coordinates[0];
         var y = yScale(d.data.candidate)+80;
         d3.select(this).classed(getEl(coordinates),true);
-        tooltip.text("Final tally: " + (d[1]*100) + "%")//d3.format(",.0%")(d[1]))//(d3.format("$,.0f")(xScale(d[1]-d[0]))
+        tooltip.text(getText(coordinates))//d3.format(",.0%")(d[1]))//(d3.format("$,.0f")(xScale(d[1]-d[0]))
               .style("opacity", 1)
               .attr('transform',`translate(${x}, ${y}) `)
               //.moveToFront();//rotate (-10)`)
@@ -253,7 +258,7 @@ var margin = {top: 0, right:0, bottom:0, left:0};
 
 var container = d3.select(element);
 var containerWidth = container.node().offsetWidth;
-var containerHeight = 250//containerWidth;
+var containerHeight = 320//containerWidth;
 var chartWidth = containerWidth - margin.right - margin.left;
 var chartHeight = containerHeight - margin.top - margin.bottom;
 

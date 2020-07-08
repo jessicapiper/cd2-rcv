@@ -17,7 +17,7 @@
 <div class="pie-chart" id="BennettVoters"><div class ="chart-subtitle">Voters who put Adrienne Bennett first:</div></div>
 <div class="pie-chart" id="CraftsVoters"><div class ="chart-subtitle">Voters who put Dale Crafts first:</div></div>
 
-<br>
+<br><br>
 <div class="chart-title">Final tally after redistribution of second-choice votes:</div>
 <div class="chart-text">In this scenario, voters who put Dale Crafts first see their votes redistributed. Eric Brakey is the winner.</div>
 <div class="charts">

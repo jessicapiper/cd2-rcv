@@ -30,7 +30,7 @@
 }
 
 .highlight-red {
-  fill: #a36774;
+  fill: #91170f;
 }
 
 .highlight-gray {
@@ -54,4 +54,24 @@
   min-width: 300;
   min-height: 200;
   display:inline-table;
+}
+
+rect {
+
+}
+
+.y .domain {
+  display: none;
+}
+
+.x .domain {
+  display: none;
+}
+
+.x .tick:not(:first-of-type) line {
+  stroke: #e7e7e7;
+}
+
+.y .tick line {
+  display: none;
 }
