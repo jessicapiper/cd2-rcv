@@ -216,7 +216,7 @@ svg.append("g")
           }
         }
         var x = getX(coordinates);//chartWidth - chartWidth/8//xScale(d[1])+15//400//xScale(d.ballot1) + 0.1//coordinates[0]+10//coordinates[0];
-        var y = yScale(d.data.candidate)+80;
+        var y = yScale(d.data.candidate)+65;
         d3.select(this).classed(getEl(coordinates),true);
         tooltip.text(getText(coordinates))//d3.format(",.0%")(d[1]))//(d3.format("$,.0f")(xScale(d[1]-d[0]))
               .style("opacity", 1)
@@ -257,7 +257,7 @@ legend.append("text")
 
 }
 
-thirdRound('#rcv3');
+//thirdRound('#rcv3');
 
 function secondRound(element,lastname){
 

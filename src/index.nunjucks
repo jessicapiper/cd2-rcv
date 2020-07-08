@@ -6,9 +6,7 @@
 
 <div class="chart-title">Distribution of first-round votes:</div>
 <div class="chart-text">Any candidate would need 50 percent of the vote to avoid a ranked-choice tally. The margin of error is 3 percent, meaning any candidates' share could increase or decrease by that amount.</div>
-<div class="charts">
-  <div class="inline-chart" id="rcv1"></div>
-</div>
+<div class="inline-chart" id="rcv1"></div>
 
 <div class="chart-title">Where voters say they would go next:</div>
 <div class="chart-text">Only second-choice picks of the voters who preferred the candidate with the least first-choice votes matter, but we're displaying all second-choice votes here.</div>
@@ -17,17 +15,9 @@
 <div class="pie-chart" id="BennettVoters"><div class ="chart-subtitle">Voters who put Adrienne Bennett first:</div></div>
 <div class="pie-chart" id="CraftsVoters"><div class ="chart-subtitle">Voters who put Dale Crafts first:</div></div>
 
-<br><br>
-<div class="chart-title">Final tally after redistribution of second-choice votes:</div>
-<div class="chart-text">In this scenario, voters who put Dale Crafts first see their votes redistributed. Eric Brakey is the winner.</div>
-<div class="charts">
-  <div class="inline-chart" id="rcv3"></div>
-</div>
-
 <script>
 var results = {% include '_data/results.json' %};
 var round2 = {% include '_data/round2.json' %};
-var round3 = {% include '_data/round3.json' %};
 </script>
 
 {% endblock %}

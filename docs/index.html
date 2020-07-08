@@ -12,9 +12,7 @@
 
 <div class="chart-title">Distribution of first-round votes:</div>
 <div class="chart-text">Any candidate would need 50 percent of the vote to avoid a ranked-choice tally. The margin of error is 3 percent, meaning any candidates' share could increase or decrease by that amount.</div>
-<div class="charts">
-  <div class="inline-chart" id="rcv1"></div>
-</div>
+<div class="inline-chart" id="rcv1"></div>
 
 <div class="chart-title">Where voters say they would go next:</div>
 <div class="chart-text">Only second-choice picks of the voters who preferred the candidate with the least first-choice votes matter, but we're displaying all second-choice votes here.</div>
@@ -23,28 +21,26 @@
 <div class="pie-chart" id="BennettVoters"><div class="chart-subtitle">Voters who put Adrienne Bennett first:</div></div>
 <div class="pie-chart" id="CraftsVoters"><div class="chart-subtitle">Voters who put Dale Crafts first:</div></div>
 
-<br><br>
-<div class="chart-title">Final tally after redistribution of second-choice votes:</div>
-<div class="chart-text">In this scenario, voters who put Dale Crafts first see their votes redistributed. Eric Brakey is the winner.</div>
-<div class="charts">
-  <div class="inline-chart" id="rcv3"></div>
-</div>
-
 <script>
 var results = [
   {
+    "candidate": "Undecided",
+    "ballot1": .19,
+    "ballot2": .0
+  },
+  {
     "candidate": "Eric Brakey",
-    "ballot1": .37,
+    "ballot1": .19,
     "ballot2": .14
   },
   {
     "candidate": "Adrienne Bennett",
-    "ballot1": .32,
+    "ballot1": .25,
     "ballot2": .17
   },
   {
     "candidate": "Dale Crafts",
-    "ballot1": .31,
+    "ballot1": .37,
     "ballot2": .0
   }
 ]
@@ -53,38 +49,25 @@ var round2 = [
   {
     "candidate": "Eric Brakey",
     "Brakey": .0,
-    "Bennett": .4,
-    "Crafts": .35
+    "Bennett": .28,
+    "Crafts": .25
   },
   {
     "candidate": "Adrienne Bennett",
-    "Brakey": .2,
+    "Brakey": .33,
     "Bennett": .0,
-    "Crafts": .6
+    "Crafts": .45
   },{
     "candidate": "Dale Crafts",
-    "Brakey": .37,
-    "Bennett": .41,
+    "Brakey": .40,
+    "Bennett": .46,
     "Crafts": .0
   },
   {
-    "candidate": "no second choice",
-    "Brakey": .33,
-    "Bennett": .19,
-    "Crafts": .05
-  }
-]
-;
-var round3 = [
-  {
-    "candidate": "Eric Brakey",
-    "First ballot": .37,
-    "Redistributed votes": .14
-  },
-  {
-    "candidate": "Adrienne Bennett",
-    "First ballot": .32,
-    "Redistributed votes": .17
+    "candidate": "undecided",
+    "Brakey": .27,
+    "Bennett": .25,
+    "Crafts": .30
   }
 ]
 ;
