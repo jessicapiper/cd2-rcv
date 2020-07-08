@@ -91,11 +91,11 @@ svg.append("g")
   //.attr("stroke", "lightgray")
   .data(series)
   .enter().append("g")
-    .attr("fill", function(d){
-      if(d.candidate = "Unknown"){
-        return("#ababab");
+    .attr("fill", function(d, i){
+      if(d.candidate == "Undecided"){
+        return("#ababab")
       }else{
-        return("red");
+        return("#c4002a");
       }
     })//d => color(d.key))
   .selectAll("rect")
@@ -325,7 +325,7 @@ svg.selectAll('g')
   .attr("transform", `translate(${chartWidth/2},${chartHeight/2})`)
   .on('mouseenter', function(d) {
       d3.select(this).classed('highlight-gray', true);
-      tooltip.html(labels[d.data.key] + ": " + d.data.value*100 + "%")//(d3.format("$,.0f")(xScale(d[1]-d[0]))
+      tooltip.html(labels[d.data.key] + ": " + d3.format(",.0%")(d.data.value))//*100 + "%")//(d3.format("$,.0f")(xScale(d[1]-d[0]))
             .style("opacity", 1)
             .attr('transform',`translate(80, 50)`)//(${xPosition}, ${yPosition}) `)
             //.attr('transform',`translate(arcGenerator.centroid(d))`)
