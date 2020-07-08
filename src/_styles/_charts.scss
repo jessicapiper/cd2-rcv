@@ -57,7 +57,7 @@
 }
 
 rect {
-  
+
 }
 
 .y .domain {
@@ -66,6 +66,7 @@ rect {
 
 .x .domain {
   display: none;
+  align-items: baseline;
 }
 
 .x .tick:not(:first-of-type) line {

@@ -41,8 +41,6 @@ var xAxis = d3.axisBottom(xScale)
 
 var yAxis = d3.axisLeft(yScale);
 
-var error = .03;
-
 svg.append("g")
     .attr("class", "x axis")
     .attr("transform", `translate(0,${chartHeight})`)
@@ -63,62 +61,54 @@ svg.append("g")
     .selectAll("text")
         .style("font-size","12px");
 
-var keys = ["ballot1"]
+//var keys = ["ballot1"]
 
-var series = d3.stack().keys(keys)(results)
+//var series = d3.stack().keys(keys)(results)
 
-console.log(series);
+//console.log(series);
 
-var color = d3.scaleOrdinal()
-  .domain(keys)
-  .range(["#c4002a","red"])
+//var color = d3.scaleOrdinal()
+//  .domain(keys)
+//  .range(["#c4002a","red"])
   //.range(d3.quantize(t => d3.interpolateSpectral(t * 0.8 + 0.1), series.length).reverse())
-  .unknown("#ccc")
+  //.unknown("#ccc")
 
 var tooltip = svg.append('text')
     .attr('class', 'chart-tooltip');
 
-function getColor(d){
-  if(d == "Undecided"){
-    return("#ababab");
-  }else{
-    return("red");
-  }
-}
+var xResults = [0.19,0.19,0.25,0.37]
 
-svg.append("g")
-  .selectAll("g")
-  //.attr("stroke", "lightgray")
-  .data(series)
-  .enter().append("g")
-    .attr("fill", function(d, i){
-      if(d.candidate == "Undecided"){
-        return("#ababab")
-      }else{
-        return("#c4002a");
-      }
-    })//d => color(d.key))
-  .selectAll("rect")
-  .data(d => d)
-  .join("rect")
-    .attr("x", d => xScale(d[0]))//d => x(d[0]))
-    .attr("y", d => yScale(d.data.candidate))
-    .attr("width", d => xScale(d[1]-d[0]))
-    .attr("height",yScale.bandwidth())
-    //.attr("fill",getColor(d.data.candidate))
+svg.append('g')
+  .attr('class','bars')
+  .selectAll('.bar')
+  .data(results)
+  .enter()
+  .append('rect')
+  .attr('class','bar')
+  .attr('x',xResults)
+  .attr('y',d=>yScale(d.candidate))
+  .attr("height",yScale.bandwidth())
+  .attr("width",d=> xScale(d.ballot1)-0.19)
+  .attr("fill", function(d, i){
+    if(d.candidate == "Undecided"){
+      return("#ababab")
+    }else{
+      return("#c4002a");
+    }
+  })
   .on('mouseenter', function(d) {
       //var coordinates= d3.mouse(this);
-      var xPosition = xScale(d[1])+5//400//xScale(d.ballot1) + 0.1//coordinates[0]+10//coordinates[0];
-      var yPosition = yScale(d.data.candidate)+22//coordinates[1]-10//coordinates[1] + 25;
+      var xPosition = xScale(d.ballot1)+5//400//xScale(d.ballot1) + 0.1//coordinates[0]+10//coordinates[0];
+      var yPosition = yScale(d.candidate)+22//coordinates[1]-10//coordinates[1] + 25;
       d3.select(this).classed('highlight-red', true);
-      tooltip.html(d3.format(",.0%")(d[1]))//(d3.format("$,.0f")(xScale(d[1]-d[0]))
+      tooltip.text(d3.format(",.0%")(d.ballot1))//(d3.format("$,.0f")(xScale(d[1]-d[0]))
             //.style("opacity", 1)
             .attr('transform',`translate(${xPosition}, ${yPosition}) `)
-            .moveToFront();//rotate (-10)`)
+            //.moveToFront();//rotate (-10)`)
     })
     .on('mouseleave', function(d) {
       d3.select(this).classed('highlight-red', false);
-      tooltip.text('');
+      //tooltip.text('');
     });
 
 }
@@ -279,7 +269,7 @@ function secondRound(element,lastname){
 var margin = {top: 0, right:0, bottom:0, left:0};
 
 var container = d3.select(element);
-var containerWidth = container.node().offsetWidth;
+var containerWidth = container.node().offsetWidth*0.8;
 var containerHeight = Math.max(250,containerWidth)//containerWidth;
 var chartWidth = containerWidth - margin.right - margin.left;
 var chartHeight = containerHeight - margin.top - margin.bottom;
