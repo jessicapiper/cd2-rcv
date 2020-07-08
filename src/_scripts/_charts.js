@@ -5,7 +5,7 @@ import round3 from "../_data/round3.json";
 
 function firstRound(element){
 
-var margin = {top: 20, right:20, bottom:120, left:140};
+var margin = {top: 20, right:20, bottom:120, left:110};
 
 var container = d3.select(element);
 var containerWidth = container.node().offsetWidth;
@@ -51,17 +51,17 @@ svg.append("g")
     //.attr("stroke", "blue")
     .selectAll("text")
         .style("text-anchor", "end")
-        .style("font-size","14px")
+        .style("font-size","12px")
         .attr("dx", "-.8em")
         .attr("dy", ".15em")
         .attr("transform", "rotate(-65)");
 
 svg.append("g")
-    .style("font","14px")
+    .style("font","12px")
     .attr("class", "y axis")
     .call(yAxis)
     .selectAll("text")
-        .style("font-size","14px");
+        .style("font-size","12px");
 
 var keys = ["ballot1"]
 
@@ -112,7 +112,7 @@ firstRound('#rcv1');
 
 function thirdRound(element){
 
-var margin = {top: 20, right:60, bottom:120, left:140};
+var margin = {top: 20, right:60, bottom:120, left:110};
 
 var container = d3.select(element);
 var containerWidth = container.node().offsetWidth;
@@ -152,18 +152,18 @@ svg.append("g")
     .call(xAxis)
     .selectAll("text")
         .style("text-anchor", "end")
-        .style("font-size","14px")
+        .style("font-size","12px")
         .attr("dx", "-.8em")
         .attr("dy", ".15em")
         .attr("transform", "rotate(-65)");
 
 svg.append("g")
-    .style("font","14px")
+    .style("font","12px")
     .attr("class", "y axis")
     .attr("transform", `translate(0,50)`)
     .call(yAxis)
     .selectAll("text")
-        .style("font-size","14px");
+        .style("font-size","12px");
 
 var keys = ["First ballot","Redistributed votes"]
 
