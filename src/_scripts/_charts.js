@@ -78,12 +78,26 @@ var color = d3.scaleOrdinal()
 var tooltip = svg.append('text')
     .attr('class', 'chart-tooltip');
 
+function getColor(d){
+  if(d == "Undecided"){
+    return("#ababab");
+  }else{
+    return("red");
+  }
+}
+
 svg.append("g")
   .selectAll("g")
   //.attr("stroke", "lightgray")
   .data(series)
   .enter().append("g")
-    .attr("fill", d => color(d.key))
+    .attr("fill", function(d){
+      if(d.candidate = "Unknown"){
+        return("#ababab");
+      }else{
+        return("red");
+      }
+    })//d => color(d.key))
   .selectAll("rect")
   .data(d => d)
   .join("rect")
@@ -91,10 +105,11 @@ svg.append("g")
     .attr("y", d => yScale(d.data.candidate))
     .attr("width", d => xScale(d[1]-d[0]))
     .attr("height",yScale.bandwidth())
+    //.attr("fill",getColor(d.data.candidate))
   .on('mouseenter', function(d) {
       //var coordinates= d3.mouse(this);
       var xPosition = xScale(d[1])+5//400//xScale(d.ballot1) + 0.1//coordinates[0]+10//coordinates[0];
-      var yPosition = yScale(d.data.candidate)+28//coordinates[1]-10//coordinates[1] + 25;
+      var yPosition = yScale(d.data.candidate)+22//coordinates[1]-10//coordinates[1] + 25;
       d3.select(this).classed('highlight-red', true);
       tooltip.html(d3.format(",.0%")(d[1]))//(d3.format("$,.0f")(xScale(d[1]-d[0]))
             //.style("opacity", 1)
