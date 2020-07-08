@@ -37,11 +37,11 @@ var formatAxis = d3.format(",.0%");
 var xAxis = d3.axisBottom(xScale)
   .tickFormat(formatAxis)
   .tickSize(-chartHeight)
-  .ticks(9)//.classed('ticksColor',true);
-  //.attr("stroke","blue");
-//d3.select(xAxis).classed('ticksColor', true);
+  .ticks(9);
 
 var yAxis = d3.axisLeft(yScale);
+
+var error = .03;
 
 svg.append("g")
     .attr("class", "x axis")
@@ -208,7 +208,14 @@ svg.append("g")
             return("Final tally: " + (d[1]*100) + "%");
           }
         }
-        var x = chartWidth - chartWidth/8//xScale(d[1])+15//400//xScale(d.ballot1) + 0.1//coordinates[0]+10//coordinates[0];
+        function getX(c){
+          if(c[0] < xScale(d[1]-d[0])){
+            return(chartWidth*6/7);
+          }else {
+            return(xScale(d[1])+3);
+          }
+        }
+        var x = getX(coordinates);//chartWidth - chartWidth/8//xScale(d[1])+15//400//xScale(d.ballot1) + 0.1//coordinates[0]+10//coordinates[0];
         var y = yScale(d.data.candidate)+80;
         d3.select(this).classed(getEl(coordinates),true);
         tooltip.text(getText(coordinates))//d3.format(",.0%")(d[1]))//(d3.format("$,.0f")(xScale(d[1]-d[0]))
@@ -258,7 +265,7 @@ var margin = {top: 0, right:0, bottom:0, left:0};
 
 var container = d3.select(element);
 var containerWidth = container.node().offsetWidth;
-var containerHeight = 320//containerWidth;
+var containerHeight = Math.max(250,containerWidth)//containerWidth;
 var chartWidth = containerWidth - margin.right - margin.left;
 var chartHeight = containerHeight - margin.top - margin.bottom;
 
@@ -280,7 +287,7 @@ var tooltip = svg.append('text')
 // set the color scale
 var color = d3.scaleOrdinal()
   .domain(data[1,2,3])
-  .range(["#ffcc00", "#bf3f3f", "#ff9d1c", "#ababab"])
+  .range(["#bf7d0d", "#ffe100", "#f0b043", "#ababab"])
 
 // Compute the position of each group on the pie:
 var pie = d3.pie()
@@ -317,7 +324,7 @@ var legend = svg.append("g")
   .attr("width",data_ready.length * 36)
   .attr("height",40)
   .attr("font-family", "helvetica")
-  .attr("font-size", 10)
+  .attr("font-size", 9)
   //.style("margin-left", `${margin.left}px`)
   .attr("text-anchor", "left")
   .style("display", "block")
@@ -332,7 +339,7 @@ var legend = svg.append("g")
     }
   })
   .join("g")
-    .attr("transform", (d, i) => `translate(${i * 85},0)`);
+    .attr("transform", (d, i) => `translate(${i * 80},0)`);
 
 legend.append("rect")
       .attr("x", 5)
