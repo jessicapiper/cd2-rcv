@@ -108,7 +108,7 @@ svg.append('g')
     })
     .on('mouseleave', function(d) {
       d3.select(this).classed('highlight-red', false);
-      //tooltip.text('');
+      tooltip.text('');
     });
 
 }
@@ -269,8 +269,8 @@ function secondRound(element,lastname){
 var margin = {top: 0, right:0, bottom:0, left:0};
 
 var container = d3.select(element);
-var containerWidth = container.node().offsetWidth*0.8;
-var containerHeight = Math.max(250,containerWidth)//containerWidth;
+var containerWidth = container.node().offsetWidth*0.68;
+var containerHeight = 250//Math.max(250,containerWidth)//containerWidth;
 var chartWidth = containerWidth - margin.right - margin.left;
 var chartHeight = containerHeight - margin.top - margin.bottom;
 
@@ -280,7 +280,7 @@ var svg = container.append('svg')
             .append('g')
             .attr('transform', `translate(${margin.left}, ${margin.top})`)
 
-var radius = containerHeight/2 - 60;
+var radius = containerHeight/2 - 50;
 
 var data = round2.map(d => d[lastname])//{a: 9, b: 20, c:30, d:8, e:12}
 var labels = round2.map(d => d.candidate)
@@ -317,7 +317,7 @@ svg.selectAll('g')
       d3.select(this).classed('highlight-gray', true);
       tooltip.html(labels[d.data.key] + ": " + d3.format(",.0%")(d.data.value))//*100 + "%")//(d3.format("$,.0f")(xScale(d[1]-d[0]))
             .style("opacity", 1)
-            .attr('transform',`translate(80, 50)`)//(${xPosition}, ${yPosition}) `)
+            .attr('transform',`translate(80, 45)`)//(${xPosition}, ${yPosition}) `)
             //.attr('transform',`translate(arcGenerator.centroid(d))`)
     })
     .on('mouseleave', function(d) {
@@ -344,7 +344,7 @@ var legend = svg.append("g")
     }
   })
   .join("g")
-    .attr("transform", (d, i) => `translate(${i * 80},0)`);
+    .attr("transform", (d, i) => `translate(${i * 75},0)`);
 
 legend.append("rect")
       .attr("x", 5)
